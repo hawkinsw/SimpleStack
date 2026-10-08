@@ -28,6 +28,8 @@
 #include <cassert>
 #include <cstdint>
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 #include <llvm/Object/Binary.h>
 #include <llvm/Object/Error.h>
 #include <llvm/Support/Error.h>
@@ -35,10 +37,8 @@
 #include <memory>
 #include <sched.h>
 #include <string>
-#include <utility>
-#include <fstream>
 #include <unistd.h>
-#include <iostream>
+#include <utility>
 
 using namespace llvm;
 using namespace llvm::object;
@@ -134,9 +134,7 @@ void StackStroll::initialize_with_filename(std::string obj_filename) {
   m_binary = std::move(binary_or_error.get());
 }
 
-bool StackStroll::ok() const {
-  return m_binary != nullptr;
-}
+bool StackStroll::ok() const { return m_binary != nullptr; }
 
 Expected<std::string> StackStroll::query(uintptr_t loc) {
   assert(ok());

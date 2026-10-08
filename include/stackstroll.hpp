@@ -39,7 +39,6 @@ public:
   Expected<std::vector<std::string>> stroll();
 
 private:
-
   void initialize_with_filename(std::string obj_filename);
   Expected<std::string> query(uintptr_t loc);
   std::unique_ptr<MemoryBuffer> m_memory;
